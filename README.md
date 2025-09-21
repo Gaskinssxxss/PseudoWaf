@@ -1,3 +1,3 @@
 # PseudoWaf
-Small ids unstruct component.
-Reversing rest api path.
+* Small ids unstruct component.
+* Reversing rest api path.
